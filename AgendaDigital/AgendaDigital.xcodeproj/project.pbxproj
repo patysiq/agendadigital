@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E2FBA1FD241BADB300A8973B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FBA1FC241BADB300A8973B /* main.swift */; };
 		E2FBA204241BB45D00A8973B /* menus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FBA203241BB45D00A8973B /* menus.swift */; };
+		E2FBA206241BC13A00A8973B /* modeloDados.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FBA205241BC13A00A8973B /* modeloDados.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +28,7 @@
 		E2FBA1F9241BADB300A8973B /* AgendaDigital */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AgendaDigital; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2FBA1FC241BADB300A8973B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		E2FBA203241BB45D00A8973B /* menus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menus.swift; sourceTree = "<group>"; };
+		E2FBA205241BC13A00A8973B /* modeloDados.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = modeloDados.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				E2FBA1FC241BADB300A8973B /* main.swift */,
+				E2FBA205241BC13A00A8973B /* modeloDados.swift */,
 				E2FBA203241BB45D00A8973B /* menus.swift */,
 			);
 			path = AgendaDigital;
@@ -124,6 +127,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2FBA204241BB45D00A8973B /* menus.swift in Sources */,
+				E2FBA206241BC13A00A8973B /* modeloDados.swift in Sources */,
 				E2FBA1FD241BADB300A8973B /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
