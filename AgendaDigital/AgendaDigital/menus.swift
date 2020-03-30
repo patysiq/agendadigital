@@ -11,11 +11,11 @@ import Foundation
 
 func menu() -> Int? {
     print("--------------------------------------------------")
-    print("#         Bem-Vindo sua Agenda Digital           #")
-    print("#    ------------------------------------        #")
+    print("#         Bem-Vindo a sua Agenda Digital         #")
+    print("#      ------------------------------------      #")
     print("#                                                #")
     print("#             Escolha uma opção:                 #\n")
-    print(" 1 - Cadastrar novo Compromisso \n 2 - Editar Compromisso \n 3 - Cancelar Compromisso \n 4 - Listar Compromisso \n 5 - Relatório de Atividade")
+    print(" 1 - Cadastrar novo Compromisso \n 2 - Editar Compromisso \n 3 - Cancelar Compromissos \n 4 - Listar Compromissos \n 5 - Relatório de Atividade")
     print(" \n Digite: ", terminator: " ")
     let response = readLine()
     

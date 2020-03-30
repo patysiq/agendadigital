@@ -9,17 +9,27 @@
 
 import Foundation
 
-var nota = register()
+let manager = PersistenceManager()
 
-print(nota?.category)
+while true {
+    let response = menu()
+    switch response {
+    case 1:
+        if let note = register() {
+            manager.addNote(note: note)
+            manager.saveNotes()
+        } else {
+            print("Erro na criação de uma nova nota, tente novamente por favor!")
+        }
+    default:
+        print("Feature em desenvolvimento")
+    }
+}
 
-//while true {
-//    let response = menu()
-//    switch response {
-//    case 1:
-//        register()
-//    default:
-//        <#code#>
-//    }
-//    
-//}
+
+
+
+
+
+
+
