@@ -18,7 +18,7 @@ func menu() -> Int? {
     print(" 1 - Cadastrar novo Compromisso \n 2 - Editar Compromisso \n 3 - Cancelar Compromissos \n 4 - Listar Compromissos \n 5 - Relatório de Atividade")
     print(" \n Digite: ", terminator: " ")
     let response = readLine()
-    
+
     if let response = response {
         return Int(response)
     } else {

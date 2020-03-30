@@ -66,7 +66,7 @@ func getDate() -> DateComponents{
     return responseDate
 }
 
-//decrição deve ser opicional
+//decrição deve ser opcional
 func getDescription() -> String{
     
     while true {
