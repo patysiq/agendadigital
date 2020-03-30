@@ -10,7 +10,6 @@ import Foundation
 
 
 func menu() -> Int? {
-    
     print("--------------------------------------------------")
     print("#         Bem-Vindo sua Agenda Digital           #")
     print("#    ------------------------------------        #")

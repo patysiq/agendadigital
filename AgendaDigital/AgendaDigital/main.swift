@@ -1,3 +1,4 @@
+#!/usr/bin/swift
 //
 //  main.swift
 //  AgendaDigital
@@ -8,5 +9,17 @@
 
 import Foundation
 
+var nota = register()
 
-menu()
+print(nota?.category)
+
+//while true {
+//    let response = menu()
+//    switch response {
+//    case 1:
+//        register()
+//    default:
+//        <#code#>
+//    }
+//    
+//}
