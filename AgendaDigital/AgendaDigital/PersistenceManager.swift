@@ -51,4 +51,40 @@ class PersistenceManager {
         //return paths[0]
         return paths.first!
     }
+    
+    func updateNote(indexNote: Int) -> Bool {
+        
+        var newNote = manager.notes[indexNote]
+        print("\n1 - Data ou Hora do compromisso: ")
+        print("2 - Descrição")
+        print("3 - Duração")
+        print("4 - Categoria")
+        print("5 - Repetir")
+        print("Digita qual campo deseja editar:", terminator: " ")
+        let field = readLine()
+            
+        if let field = field, let intFild = Int(field){
+            switch intFild {
+            case 1:
+                newNote.date = getDate()
+            case 2:
+                newNote.description = getDescription()
+            case 3:
+                newNote.duration = getDuration()
+            case 4:
+                newNote.category = getCategory()
+            case 5:
+                newNote.status = getStatusNote()
+            default:
+                print("\nEntrada Incorreta")
+                return false
+            }
+            manager.notes[indexNote] = newNote
+            manager.saveNotes()
+            return true
+        } else {
+             print("\nEntrada Incorreta\n")
+            return false
+        }
+    }
 }

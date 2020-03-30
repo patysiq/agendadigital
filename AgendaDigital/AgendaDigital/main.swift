@@ -21,6 +21,11 @@ while true {
         } else {
             print("Erro na criação de uma nova nota, tente novamente por favor!")
         }
+    case 2:
+        let indexNote = listAndSelectNote(manager: manager)
+        if let indexNote = indexNote {
+            manager.updateNote(indexNote: indexNote) == true ? print("\nCompromisso Editado!\n"):print("\nAlgo de errado ocorreu!\n")
+        }
     default:
         print("Feature em desenvolvimento")
     }

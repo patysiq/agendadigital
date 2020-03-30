@@ -8,6 +8,8 @@
 
 import Foundation
 
+
+//Register Functions
 func register() -> Note? {
     
     var dateNote = DateComponents()
@@ -20,7 +22,7 @@ func register() -> Note? {
     descriptionNote = getDescription()
     durationNote = getDuration()
     categoryNote = getCategory()
-    statusNote = gestStatusNote()
+    statusNote = getStatusNote()
     
     let note = Note(date: dateNote, description: descriptionNote, duration: durationNote, category: categoryNote, status: statusNote)
     return note
@@ -29,6 +31,7 @@ func register() -> Note? {
 
 
 func getDate() -> DateComponents{
+
     var responseDate = DateComponents()
     var response: String?
     
@@ -79,6 +82,7 @@ func getDescription() -> String{
 }
 
 func getDuration() -> DateComponents{
+
     var date = DateComponents()
     
     while true {
@@ -122,12 +126,12 @@ func getCategory() -> Categories{
                 print("Entrada inválida ! \n")
             }
         }
-
     }
 }
 
 //Retorna se o compromisso é repetitivo, levando-se em conta inicialmente que ele se repete SEMANALMENTE
-func gestStatusNote() -> Bool{
+func getStatusNote() -> Bool{
+
     while true {
         print("Seu compromisso é semanal?")
         print("1 - Não")
@@ -147,5 +151,36 @@ func gestStatusNote() -> Bool{
         }
     }
 }
+
+
+// Edit Note Functions
+
+func listAndSelectNote(manager: PersistenceManager) -> Int? {
+    let success = manager.loadNotes()
+    
+    if success {
+        print("\n#          Compromissos          #")
+        print("#        ---------------         #\n")
+
+        for (index, note) in manager.notes.enumerated() {
+            print("Compromisso: \(index+1) - \(note.date.day!)/\(note.date.month!)/\(note.date.year!) - \(note.date.hour!):\(note.date.minute!)")
+            print("Description: \(note.description) \n")
+        }
+        while true {
+            print("Digite o número do compromisso que deseja editar:",terminator: " ")
+            let response = readLine()
+            if let reponse = response, let choice = Int(reponse) {
+                return choice-1
+            } else {
+                 print("Entrada inválida !")
+                continue
+            }
+        }
+    } else {
+         return nil
+    }
+}
+
+
 
 
