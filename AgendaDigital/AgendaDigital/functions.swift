@@ -181,6 +181,33 @@ func listAndSelectNote(manager: PersistenceManager) -> Int? {
     }
 }
 
+// Remove Note
 
+func listAndRemoveNote(manager: PersistenceManager) -> Int? {
+let success = manager.loadNotes()
 
+if success {
+    print("\n#          Compromissos          #")
+    print("#        ---------------         #\n")
+
+    for (index, note) in manager.notes.enumerated() {
+        print("Compromisso: \(index+1) - \(note.date.day!)/\(note.date.month!)/\(note.date.year!) - \(note.date.hour!):\(note.date.minute!)")
+        print("Description: \(note.description) \n")
+    }
+    while true {
+        print("Digite o número do compromisso que deseja cancelar:",terminator: " ")
+        let response = readLine()
+        if let reponse = response, let choice = Int(reponse) {
+            return choice-1
+        } else {
+             print("Entrada inválida !")
+            continue
+        }
+    }
+} else {
+     return nil
+}
+    
+
+}
 

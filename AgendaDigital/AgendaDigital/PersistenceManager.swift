@@ -46,6 +46,16 @@ class PersistenceManager {
         notes.append(note)
     }
     
+    func deleteNote(indexNote: Int) -> Bool {
+         _ = loadNotes()
+      notes.remove(at: indexNote)
+    if notes.isEmpty{
+        return true
+    } else{
+        return false
+    }
+     }
+    
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         //return paths[0]
