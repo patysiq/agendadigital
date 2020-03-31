@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 func menu() -> Int? {
     print("--------------------------------------------------")
     print("#         Bem-Vindo a sua Agenda Digital         #")

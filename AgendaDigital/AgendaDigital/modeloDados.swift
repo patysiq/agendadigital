@@ -16,7 +16,7 @@ struct Note: Codable {
     var status: Bool
 }
 
-enum Categories{
+enum Categories: CaseIterable{
     case study
     case personal
     case finances

@@ -27,13 +27,21 @@ while true {
             manager.updateNote(indexNote: indexNote) == true ? print("\nCompromisso Editado!\n"):print("\nAlgo de errado ocorreu!\n")
         }
     case 3:
-    let indexNote = listAndRemoveNote(manager: manager)
-    if let indexNote = indexNote {
-        manager.deleteNote(indexNote: indexNote) == true ? print("\nCompromisso Cancelado!\n"):print("\nAlgo de errado ocorreu!\n")
-        manager.saveNotes()
-    }
+        let indexNote = listAndRemoveNote(manager: manager)
+        if let indexNote = indexNote {
+            manager.deleteNote(indexNote: indexNote) == true ? print("\nCompromisso Cancelado!\n"):print("\nAlgo de errado ocorreu!\n")
+            manager.saveNotes()
+        }
+    case 5:
+        let success = manager.loadNotes()
+        if success{
+            let activityTimes = activitiesReport(notes: manager.notes)
+            showMetrics(times: activityTimes)
+        } else {
+            print("\nNenhum compromisso cadastrado atualmente !\n")
+        }
     default:
-        print("Feature em desenvolvimento")
+        print("\nFeature em desenvolvimento\n")
     }
 }
 

@@ -47,13 +47,17 @@ class PersistenceManager {
     }
     
     func deleteNote(indexNote: Int) -> Bool {
-         _ = loadNotes()
-      notes.remove(at: indexNote)
-    if notes.isEmpty{
-        return true
-    } else{
-        return false
-    }
+        _ = loadNotes()
+        notes.remove(at: indexNote)
+        saveNotes()
+        
+        return notes.isEmpty == true ? true:false
+        
+        if notes.isEmpty {
+            return true
+        } else {
+            return false
+        }
      }
     
     func getDocumentsDirectory() -> URL {

@@ -184,30 +184,67 @@ func listAndSelectNote(manager: PersistenceManager) -> Int? {
 // Remove Note
 
 func listAndRemoveNote(manager: PersistenceManager) -> Int? {
-let success = manager.loadNotes()
+    let success = manager.loadNotes()
 
-if success {
-    print("\n#          Compromissos          #")
-    print("#        ---------------         #\n")
+    if success {
+        print("\n#          Compromissos          #")
+        print("#        ---------------         #\n")
 
-    for (index, note) in manager.notes.enumerated() {
-        print("Compromisso: \(index+1) - \(note.date.day!)/\(note.date.month!)/\(note.date.year!) - \(note.date.hour!):\(note.date.minute!)")
-        print("Description: \(note.description) \n")
+        for (index, note) in manager.notes.enumerated() {
+            print("Compromisso: \(index+1) - \(note.date.day!)/\(note.date.month!)/\(note.date.year!) - \(note.date.hour!):\(note.date.minute!)")
+            print("Description: \(note.description) \n")
+        }
+
+        while true {
+            print("Digite o número do compromisso que deseja cancelar:",terminator: " ")
+            let response = readLine()
+            if let reponse = response, let choice = Int(reponse) {
+                return choice-1
+            } else {
+                 print("Entrada inválida !")
+                continue
+            }
+        }
+    } else {
+         return nil
     }
-    while true {
-        print("Digite o número do compromisso que deseja cancelar:",terminator: " ")
-        let response = readLine()
-        if let reponse = response, let choice = Int(reponse) {
-            return choice-1
-        } else {
-             print("Entrada inválida !")
-            continue
+}
+
+func activitiesReport(notes: [Note]) -> (timeStudy: Int, timePersonal: Int,  timeFinances: Int) {
+    
+    var timeInMinutes: (timeStudy: Int, timePersonal: Int,  timeFinances: Int) = (0,0,0)
+
+    for note in notes {
+        switch note.category {
+        case .study:
+            timeInMinutes.timeStudy += note.duration.hour! * 60 + note.duration.minute!
+        case .personal:
+            timeInMinutes.timePersonal += note.duration.hour! * 60 + note.duration.minute!
+        case .finances:
+            timeInMinutes.timeFinances += note.duration.hour! * 60 + note.duration.minute!
         }
     }
-} else {
-     return nil
-}
     
-
+    return timeInMinutes
 }
 
+func showMetrics(times: (timeStudy: Int, timePersonal: Int,  timeFinances: Int)) {
+    
+    let studyPercentage = times.timeStudy*100/(times.timeStudy+times.timePersonal+times.timeFinances)
+    let personalPercentage = times.timePersonal*100/(times.timeStudy+times.timePersonal+times.timeFinances)
+    let financesPercentage = times.timeFinances*100/(times.timeStudy+times.timePersonal+times.timeFinances)
+    
+    
+    print("\n#          Este é seu plano de gastos para as atividades          #")
+    print("           -------------------------------------------------         ")
+    print("#                                                                   #\n")
+    print("1 - Em Estudos serão gastos: \(times.timeStudy/60) horas e \(times.timeStudy%60) minutos com atividades")
+    print("O gasto com as atividades de estudo representam \(studyPercentage) % do seu tempo dedicado fique atento!\n\n")
+    
+    print("2 - Em Pessoal serão gastos: \(times.timePersonal/60) horas e \(times.timePersonal%60) minutos com atividades")
+    print("O gasto com as atividades pessoais representam \(personalPercentage) % do seu tempo dedicado fique atento!\n\n")
+    
+    print("3 - Em Finanças serão gastos: \(times.timeFinances/60) horas e \(times.timeFinances%60) minutos com atividades")
+    print("O gasto com as atividades financeiras representam \(financesPercentage) % do seu tempo dedicado fique atento!\n\n")
+    
+}
