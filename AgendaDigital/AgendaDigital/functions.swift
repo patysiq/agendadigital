@@ -210,6 +210,140 @@ func listAndRemoveNote(manager: PersistenceManager) -> Int? {
     }
 }
 
+// List Note
+
+func selectCategory(notes: [Note]) {
+  
+    print("\nQual categoria você quer listar:         ")
+    print("1 - Estudos:                               ")
+    print("2 - Pessoal:                               ")
+    print("3 - Finanças:                              ")
+    print("categoria:", terminator: " ")
+    let response  = readLine()
+    
+    if let response = response, let choice = Int(response) {
+        switch choice {
+        case 1:    //study
+            print("\n#          Compromissos          #")
+            print("#        ---------------         #\n")
+            for (index, note) in notes.enumerated() {
+                if note.category == Categories.study {
+                    print("Compromisso: \(index+1) - \(note.date.day!)/\(note.date.month!)/\(note.date.year!) - \(note.date.hour!):\(note.date.minute!)")
+                    print("Categoria: Estudos")
+                    print("Duração do compromisso: \(note.duration.hour!)h:\(note.duration.minute!)m")
+                    print("Description: \(note.description) \n")
+                }
+            }
+        case 2: //personal
+            print("\n#          Compromissos          #")
+            print("#        ---------------         #\n")
+            for (index, note) in notes.enumerated() {
+                if note.category == Categories.personal {
+                    print("Compromisso: \(index+1) - \(note.date.day!)/\(note.date.month!)/\(note.date.year!) - \(note.date.hour!):\(note.date.minute!)")
+                    print("Categoria: Pessoal")
+                    print("Duração do compromisso: \(note.duration.hour!)h:\(note.duration.minute!)m")
+                    print("Description: \(note.description) \n")
+                }
+            }
+        case 3: //finances
+            print("\n#          Compromissos          #")
+            print("#        ---------------         #\n")
+            for (index, note) in notes.enumerated() {
+                if note.category == Categories.finances {
+                    print("Compromisso: \(index+1) - \(note.date.day!)/\(note.date.month!)/\(note.date.year!) - \(note.date.hour!):\(note.date.minute!)")
+                    print("Categoria: Finanças")
+                    print("Duração do compromisso: \(note.duration.hour!)h:\(note.duration.minute!)m")
+                    print("Description: \(note.description) \n")
+                }
+            }
+        default:
+            print("Entrada inválida ! \n")
+        }
+    }
+}
+
+
+func getMyDate() -> DateComponents {
+    let dateS = Date()
+    let dateComp = Calendar.current.dateComponents([.day, .month, .year], from: dateS)
+    return dateComp
+}
+
+
+func selectDate(notes: [Note]){
+    let dateCurrent = getMyDate()
+
+    print("Qual a frequência você deseja listar os compromissos:     ")
+    print("1 - Mês atual:                                            ")
+    print("2 - Semana atual:                                         ")
+    print("3 - Dia atual:                                            ")
+    print("frequência:", terminator: " ")
+    let response  = readLine()
+    
+    if let response = response, let choice = Int(response) {
+        switch choice {
+          case 1:
+            print("\n#          Compromissos          #")
+            print("#        ---------------         #\n")
+            for (index, note) in notes.enumerated() {
+                if dateCurrent.month == note.date.month {
+                    print("Compromisso: \(index+1) - \(note.date.day!)/\(note.date.month!)/\(note.date.year!) - \(note.date.hour!):\(note.date.minute!)")
+                    print("Categoria: \(note.category)")
+                    print("Duração do compromisso: \(note.duration.hour!)h:\(note.duration.minute!)m")
+                    print("Description: \(note.description) \n")
+                }
+            }
+          case 2:
+            print("\n#          Compromissos          #")
+            print("#        ---------------         #\n")
+            let range = dateCurrent.day!...dateCurrent.day!+7
+            for (index, note) in manager.notes.enumerated() {
+                if range.contains(note.date.day!) && note.date.month == dateCurrent.month {
+                    print("Compromisso: \(index+1) - \(note.date.day!)/\(note.date.month!)/\(note.date.year!) - \(note.date.hour!):\(note.date.minute!)")
+                    print("Categoria: \(note.category)")
+                    print("Duração do compromisso: \(note.duration.hour!)h:\(note.duration.minute!)m")
+                    print("Description: \(note.description) \n")
+                }
+            }
+          case 3:
+            print("\n#          Compromissos          #")
+            print("#        ---------------         #\n")
+            for (index, note) in manager.notes.enumerated() {
+                if dateCurrent.day == note.date.day {
+                    print("Compromisso: \(index+1) - \(note.date.day!)/\(note.date.month!)/\(note.date.year!) - \(note.date.hour!):\(note.date.minute!)")
+                    print("Categoria: \(note.category)")
+                    print("Duração do compromisso: \(note.duration.hour!)h:\(note.duration.minute!)m")
+                    print("Description: \(note.description) \n")
+                }
+            }
+          default:
+            print("Entrada inválida ! \n")
+        }
+    }
+}
+
+
+func listNote(notes: [Note]){
+
+    print("\nDeseja listar os dados por:      ")
+    print("1 - Categoria:                   ")
+    print("2 - Frequência:                  ")
+    print("Listar por:", terminator: " ")
+    let response  = readLine()
+    
+    if let response = response, let choice = Int(response) {
+        switch choice {
+            case 1:
+                selectCategory (notes: notes)
+            case 2:
+                selectDate (notes: notes)
+            default:
+                print("Entrada inválida !\n")
+        }
+    }
+}
+
+
 func activitiesReport(notes: [Note]) -> (timeStudy: Int, timePersonal: Int,  timeFinances: Int) {
     
     var timeInMinutes: (timeStudy: Int, timePersonal: Int,  timeFinances: Int) = (0,0,0)

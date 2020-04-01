@@ -32,6 +32,9 @@ while true {
             manager.deleteNote(indexNote: indexNote) == true ? print("\nCompromisso Cancelado!\n"):print("\nAlgo de errado ocorreu!\n")
             manager.saveNotes()
         }
+    case 4:
+        let success = manager.loadNotes()
+        success == true ? listNote(notes: manager.notes):print("Não há compromissos cadastrados !\n")
     case 5:
         let success = manager.loadNotes()
         if success{
