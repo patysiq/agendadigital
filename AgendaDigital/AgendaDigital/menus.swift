@@ -23,5 +23,4 @@ func menu() -> Int? {
     } else {
         return nil
     }
-    
 }

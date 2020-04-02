@@ -228,7 +228,7 @@ func selectCategory(notes: [Note]) {
             print("#        ---------------         #\n")
             for (index, note) in notes.enumerated() {
                 if note.category == Categories.study {
-                    print("Compromisso: \(index+1) - \(note.date.day!)/\(note.date.month!)/\(note.date.year!) - \(note.date.hour!):\(note.date.minute!)")
+                    print("Compromisso: \(index+1) - \(String(format: "%02d",note.date.day!))/\(String(format: "%02d",note.date.month!))/\(note.date.year!) - \(note.date.hour!):\(note.date.minute!)")
                     print("Categoria: Estudos")
                     print("Duração do compromisso: \(note.duration.hour!)h:\(note.duration.minute!)m")
                     print("Description: \(note.description) \n")
@@ -239,7 +239,7 @@ func selectCategory(notes: [Note]) {
             print("#        ---------------         #\n")
             for (index, note) in notes.enumerated() {
                 if note.category == Categories.personal {
-                    print("Compromisso: \(index+1) - \(note.date.day!)/\(note.date.month!)/\(note.date.year!) - \(note.date.hour!):\(note.date.minute!)")
+                   print("Compromisso: \(index+1) - \(String(format: "%02d",note.date.day!))/\(String(format: "%02d",note.date.month!))/\(note.date.year!) - \(note.date.hour!):\(note.date.minute!)")
                     print("Categoria: Pessoal")
                     print("Duração do compromisso: \(note.duration.hour!)h:\(note.duration.minute!)m")
                     print("Description: \(note.description) \n")
@@ -250,7 +250,7 @@ func selectCategory(notes: [Note]) {
             print("#        ---------------         #\n")
             for (index, note) in notes.enumerated() {
                 if note.category == Categories.finances {
-                    print("Compromisso: \(index+1) - \(note.date.day!)/\(note.date.month!)/\(note.date.year!) - \(note.date.hour!):\(note.date.minute!)")
+                    print("Compromisso: \(index+1) - \(String(format: "%02d",note.date.day!))/\(String(format: "%02d",note.date.month!))/\(note.date.year!) - \(note.date.hour!):\(note.date.minute!)")
                     print("Categoria: Finanças")
                     print("Duração do compromisso: \(note.duration.hour!)h:\(note.duration.minute!)m")
                     print("Description: \(note.description) \n")
@@ -287,7 +287,7 @@ func selectDate(notes: [Note]){
             print("#        ---------------         #\n")
             for (index, note) in notes.enumerated() {
                 if dateCurrent.month == note.date.month {
-                    print("Compromisso: \(index+1) - \(note.date.day!)/\(note.date.month!)/\(note.date.year!) - \(note.date.hour!):\(note.date.minute!)")
+                    print("Compromisso: \(index+1) - \(String(format: "%02d",note.date.day!))/\(String(format: "%02d",note.date.month!))/\(note.date.year!) - \(note.date.hour!):\(note.date.minute!)")
                     print("Categoria: \(note.category)")
                     print("Duração do compromisso: \(note.duration.hour!)h:\(note.duration.minute!)m")
                     print("Description: \(note.description) \n")
@@ -299,7 +299,7 @@ func selectDate(notes: [Note]){
             let range = dateCurrent.day!...dateCurrent.day!+7
             for (index, note) in manager.notes.enumerated() {
                 if range.contains(note.date.day!) && note.date.month == dateCurrent.month {
-                    print("Compromisso: \(index+1) - \(note.date.day!)/\(note.date.month!)/\(note.date.year!) - \(note.date.hour!):\(note.date.minute!)")
+                    print("Compromisso: \(index+1) - \(String(format: "%02d",note.date.day!))/\(String(format: "%02d",note.date.month!))/\(note.date.year!) - \(note.date.hour!):\(note.date.minute!)")
                     print("Categoria: \(note.category)")
                     print("Duração do compromisso: \(note.duration.hour!)h:\(note.duration.minute!)m")
                     print("Description: \(note.description) \n")
@@ -310,7 +310,7 @@ func selectDate(notes: [Note]){
             print("#        ---------------         #\n")
             for (index, note) in manager.notes.enumerated() {
                 if dateCurrent.day == note.date.day {
-                    print("Compromisso: \(index+1) - \(note.date.day!)/\(note.date.month!)/\(note.date.year!) - \(note.date.hour!):\(note.date.minute!)")
+                    print("Compromisso: \(index+1) - \(String(format: "%02d",note.date.day!))/\(String(format: "%02d",note.date.month!))/\(note.date.year!) - \(note.date.hour!):\(note.date.minute!)")
                     print("Categoria: \(note.category)")
                     print("Duração do compromisso: \(note.duration.hour!)h:\(note.duration.minute!)m")
                     print("Description: \(note.description) \n")

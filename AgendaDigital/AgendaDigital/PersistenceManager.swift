@@ -51,13 +51,7 @@ class PersistenceManager {
         notes.remove(at: indexNote)
         saveNotes()
         
-        return notes.isEmpty == true ? true:false
-        
-        if notes.isEmpty {
-            return true
-        } else {
-            return false
-        }
+        return notes.isEmpty != true ? true:false
      }
     
     func getDocumentsDirectory() -> URL {

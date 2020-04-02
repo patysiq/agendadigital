@@ -30,7 +30,6 @@ while true {
         let indexNote = listAndRemoveNote(manager: manager)
         if let indexNote = indexNote {
             manager.deleteNote(indexNote: indexNote) == true ? print("\nCompromisso Cancelado!\n"):print("\nAlgo de errado ocorreu!\n")
-            manager.saveNotes()
         }
     case 4:
         let success = manager.loadNotes()
@@ -44,7 +43,7 @@ while true {
             print("\nNenhum compromisso cadastrado atualmente !\n")
         }
     default:
-        print("\nFeature em desenvolvimento\n")
+        print("\nOpção inválida\n")
     }
 }
 
